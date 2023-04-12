@@ -44,7 +44,7 @@ do
 
 	antennapower=`cat $scriptlocation/Items.data | jq -r ".[$j].productType.productInformation.antennaPower"`
 	batterystatus=`cat $scriptlocation/Items.data | jq -r ".[$j].batteryStatus"`
-  name=`cat $scriptlocation/Items.data | jq -r ".[$j].name"`
+  	name=`cat $scriptlocation/Items.data | jq -r ".[$j].name"`
 
 	locationtimestamp=`cat $scriptlocation/Items.data | jq -r ".[$j].location.timeStamp"`
 	locationpositiontype=`cat $scriptlocation/Items.data | jq -r ".[$j].location.positionType"`
@@ -59,7 +59,7 @@ do
 	locationfinished=`cat $scriptlocation/Items.data | jq -r ".[$j].location.locationFinished" | awk '{ print "\""$0"\"" }' `
 
 	addressmapItemFullAddress=`cat $scriptlocation/Items.data | jq -r ".[$j].address.mapItemFullAddress" | sed 's/null/""/g'`
-  addressstreetName=`cat $scriptlocation/Items.data | jq -r ".[$j].address.streetName"| sed 's/null/""/g'`
+ 	addressstreetName=`cat $scriptlocation/Items.data | jq -r ".[$j].address.streetName"| sed 's/null/""/g'`
 	addressstreetaddress=`cat $scriptlocation/Items.data | jq -r ".[$j].address.streetAddress"| sed 's/null/""/g'`
 	addresslocality=`cat $scriptlocation/Items.data | jq -r ".[$j].address.locality"| sed 's/null/""/g'`
 	addressadministrativearea=`cat $scriptlocation/Items.data | jq -r ".[$j].address.administrativeArea"| sed 's/null/""/g'`
@@ -69,7 +69,7 @@ do
 	addressareaofinteresta=`cat $scriptlocation/Items.data | jq -r ".[$j].address.areaOfInterest[0]" | sed 's/null/""/g'`
 	addressareaofinterestb=`cat $scriptlocation/Items.data | jq -r ".[$j].address.areaOfInterest[1]" | sed 's/null/""/g'`
 
-  mosquitto_pub -h $mqttbroker -u $mqttusername -P mqttpassword -t homeassistant/device_tracker/findmy_$serialnumber/config -m '{"~": "homeassistant/device_tracker/findmy_'$serialnumber'", "stat_t": "~/state", "json_attr_t": "~/attributes", "name": "Apple FindMy '$name'"}'
+  	mosquitto_pub -h $mqttbroker -u $mqttusername -P mqttpassword -t homeassistant/device_tracker/findmy_$serialnumber/config -m '{"~": "homeassistant/device_tracker/findmy_'$serialnumber'", "stat_t": "~/state", "json_attr_t": "~/attributes", "name": "Apple FindMy '$name'"}'
 	mosquitto_pub -h $mqttbroker -u $mqttusername -P mqttpassword -t homeassistant/device_tracker/findmy_$serialnumber/state -m ''"$addressmapItemFullAddress"''
 	mosquitto_pub -h $mqttbroker -u $mqttusername -P mqttpassword -t homeassistant/device_tracker/findmy_$serialnumber/attributes -m '{"latitude": '$locationlatitude', "longitude": '$locationlongitude', "altitude": '$locationaltitude', "vertical accuracy": '$locationverticalaccuracy',"horizontal accuracy": '$locationhorizontalaccuracy', "battery_level": '$batterystatus', "antenna_power": '$antennapower'}'
 
