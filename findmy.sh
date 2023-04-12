@@ -30,7 +30,7 @@ do
 
 	scp root@$iosdevice:/User/Library/Caches/com.apple.findmy.fmipcore/Items.data $scriptlocation/Items.data
 
-  airtagsnumber=`cat $scriptlocation/Items.data | jq ".[].serialNumber" | wc -l`
+  	airtagsnumber=`cat $scriptlocation/Items.data | jq ".[].serialNumber" | wc -l`
 	airtagsnumber=`echo "$(($airtagsnumber-1))"`
 
 	for j in $(seq 0 $airtagsnumber)
