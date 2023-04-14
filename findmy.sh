@@ -8,7 +8,7 @@
 
 # Setting the variables
 # location of the script
-scriptlocation=/config/custom_components/find_my
+scriptlocation=/config/shell/find_my
 
 # IP address of the jailbroken iOS device, accessible from HA through SSH
 iosdevice=192.168.1.110
