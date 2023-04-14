@@ -71,7 +71,7 @@ addressareaofinterestb=`cat $scriptlocation/Items.data | jq -r ".[$j].address.ar
 echo $(date -u) "- Data gathered, going to send data to MQTT broker $mqttbroker"
 
 echo $(date -u) "- Sending MQTT data of Apple Find My object: $name"
-mosquitto_pub -h $mqttbroker -u $mqttusername -P $mqttpassword -t homeassistant/device_tracker/findmy_$serialnumber/config -m '{"~": "homeassistant/device_tracker/findmy_'$serialnumber'", "stat_t": "~/state", "json_attr_t": "~/attributes", "name": "Apple FindMy '$name'"}'
+mosquitto_pub -h $mqttbroker -u $mqttusername -P $mqttpassword -t homeassistant/device_tracker/findmy_$serialnumber/config -m '{"unique_id": "'$serialnumber'", "~": "homeassistant/device_tracker/findmy_'$serialnumber'", "stat_t": "~/state", "json_attr_t": "~/attributes", "name": "Apple FindMy '$name'"}'
 mosquitto_pub -h $mqttbroker -u $mqttusername -P $mqttpassword -t homeassistant/device_tracker/findmy_$serialnumber/state -m ''"$addressmapItemFullAddress"''
 mosquitto_pub -h $mqttbroker -u $mqttusername -P $mqttpassword -t homeassistant/device_tracker/findmy_$serialnumber/attributes -m '{"latitude": '$locationlatitude', "longitude": '$locationlongitude', "altitude": '$locationaltitude', "vertical accuracy": '$locationverticalaccuracy',"horizontal accuracy": '$locationhorizontalaccuracy', "battery_level": '$batterystatus', "antenna_power": '$antennapower'}'
 echo -e $(date -u) "- Transfer of MQTT data completed \n"
