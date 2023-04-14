@@ -20,8 +20,7 @@ mqttbroker=192.168.1.100
 mqttusername=username
 
 # MQTT broker password
-mqttpassword=username
-
+mqttpassword=password
 
 # The script
 rm $scriptlocation/Items.data  > /dev/null 2>&1
