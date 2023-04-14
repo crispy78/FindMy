@@ -23,7 +23,9 @@ mqttusername=username
 mqttpassword=username
 
 
-#Start an infinite loop
+# The script
+rm $scriptlocation/Items.data  > /dev/null 2>&1
+echo $(date -u) "- Delete Items.data"
 echo $(date -u) "- Download Items.data from iOS device ($iosdevice)"
 scp root@$iosdevice:/User/Library/Caches/com.apple.findmy.fmipcore/Items.data $scriptlocation/Items.data > /dev/null 2>&1
 
