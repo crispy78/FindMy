@@ -8,7 +8,7 @@ Secondly you'll need a (jailbroken) iOS device (iPhone / iPad) that supports Fin
 Download the .ISO from https://github.com/palera1n/palen1x/releases and follow the instructions as mentioned on https://ios.cfw.guide/using-palen1x.
 
 ## Setup a passwordless connection
-- Follow the instructions from Smart Home Junkie on creating SSH-keys https://youtu.be/_ANmn9QSLtA (https://youtu.be/_ANmn9QSLtA?t=161)
+- Follow the instructions from Smart Home Junkie on creating SSH-keys https://youtu.be/_ANmn9QSLtA
 - If you have got your private and public key copy that key to the iOS device: use ssh-copy-id -i <location of your public key> <username>@<iosdevice--ip-address>, you'll be prompted for your password and after that the SSH-key should be copied.
 
 With Home Assistant now able to download the Items.data file the find_my.sh script will generate a device_tracker that you can use in your Maps-card for example.
