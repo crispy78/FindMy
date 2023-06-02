@@ -28,8 +28,11 @@ Change the listed variables to match your setup:
 
 ### Configuration.yaml
 Add the following line to your configuration and modify it to match your setup.
+  
 `/config/ssh/id_rsa` should match the location of your ssh-key
+
 `root@192.168.1.100` should match your SSH login
+
 `/config/shell/find_my/find_my.sh` should match the location of find_my.sh
 
 ```
